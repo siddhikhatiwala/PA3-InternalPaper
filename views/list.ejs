@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>List of vehicles</title>
+</head>
+<body>
+    <section class="vh-100" style="background-color: #e8e0ca;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <div class="container-fluid">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <img width="50px" height="50px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmyeAwG6UllrTqy-woXkIW4od2RiCVWUtGP3GKTAmt28LG3xhtLa9l3NgYHWVlqQZhaWI&usqp=CAU">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/vehicles">List of vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/vehicles/add">Add vehicle</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-5" style="margin-top: 50px;">
+    <table class="table table-striped table-hover" style="background-color: white;">
+        <tr>
+            <th>Brand</th>
+            <th>Category</th>
+            <th>Picture</th>
+            <th>Price</th>
+            <th>Depreciation</th>
+            <th>Number of years</th>
+            <th>Total price</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% vehicles.forEach((v)=>{%>
+            <tr>
+                <td><%= v.brand%></td>
+                <td><%= v.category_name%></td>
+                <td><img width="70" height="50" src="<%= v.picture%>" /> </td>
+                <td><%= v.price%></td>
+                <td><%= v.depreciation%></td>
+                <td><%= v.no_of_years%></td>
+                <td><%= v.total_price%></td>
+                <td><a class="btn btn-primary" href="/vehicles/update/<%=v._id%>"><i class="fa fa-edit"></i> Edit</a></td>
+                <td><a class="btn btn-danger" href="/vehicles/delete/<%=v._id%>"
+                        onclick="return confirm('Are you sure about the deletion request?');"><i
+                        class="fa fa-trash"></i> Delete</a></td>
+                </tr>
+            </tr>
+        <%});%>
+    </table>
+    </div>
+    </section>
+</body>
+</html>
